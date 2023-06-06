@@ -2,6 +2,7 @@ import React from 'react';
 import slider_1 from '../../assets/Sliders/slider-1.jpg'
 import slider_2 from '../../assets/Sliders/slider-2.jpg'
 import slider_3 from '../../assets/Sliders/slider-3.jpg'
+import Title from '../Title/Title';
 const Slider = () => {
     return (
         <div>
@@ -38,6 +39,7 @@ const Slider = () => {
                     </div>
                 </div>
             </div>
+            <Title title={'Children Card'} desc={'children does not want to like music'}></Title>
         </div>
     );
 };
