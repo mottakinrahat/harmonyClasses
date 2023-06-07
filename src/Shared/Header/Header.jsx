@@ -1,7 +1,19 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Header = () => {
+  const { user, logOut } = useContext(AuthContext)
+
+  const handleLogout = () => {
+    logOut()
+      .then(res => {
+        console.log(res.message);
+      })
+      .catch(err => {
+        console.log(err.message);
+      })
+  }
 
   const navItems = (
     <>
@@ -9,7 +21,7 @@ const Header = () => {
       <li><NavLink to="/instructors" activeClassName="active">Instructor</NavLink></li>
       <li><NavLink to="/theClasses" activeClassName="active">Classes</NavLink></li>
       <li><NavLink to="/dashboard" activeClassName="active">Dashboard</NavLink></li>
-      <li><NavLink to="/login"><button className='btn btn-xs bg-yellow-500 text-white'>Login</button></NavLink></li>
+      <li>{user ? <button onClick={handleLogout} className='btn btn-xs bg-yellow-500 text-white'>Logout</button> : <NavLink to="/login"><button className='btn btn-xs bg-yellow-500 text-white'>Login</button></NavLink>}</li>
     </>
   );
 

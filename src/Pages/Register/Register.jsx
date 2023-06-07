@@ -1,12 +1,32 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
-    
+    const { createUser } = useContext(AuthContext);
+
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => {
+        if (data.password !== data.confirm_password) {
+            toast.error('Password did not match');
+            return;
+        }
+
+        createUser(data.email, data.password)
+            .then(result => {
+                const createdUser = result.user;
+                console.log(createdUser);
+            })
+            .catch(err => {
+                console.log(err.message);
+            })
+    };
+
+
     return (
         <div className="flex justify-center items-center min-h-screen bg-gray-100">
             <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-10">
@@ -19,7 +39,7 @@ const Register = () => {
                         <input
                             type="text"
                             id="name"
-                           {...register("name")}
+                            {...register("name")}
                             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500"
                             placeholder="Enter your Name"
                         />
@@ -44,7 +64,7 @@ const Register = () => {
                             type="password"
                             id="password"
                             {...register("password")}
-                
+
                             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500"
                             placeholder="Enter your password"
                         />
@@ -82,6 +102,7 @@ const Register = () => {
                 </form>
                 <p className='mt-4' >Already have an account?<Link to='/login' className='text-blue-500'>Log in</Link></p>
             </div>
+            <ToastContainer />
         </div>
     );
 };

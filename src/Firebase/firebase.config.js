@@ -5,13 +5,14 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBBxk4XaVzJDz3_XFwOMBjVNzEv0hpPlXQ",
-  authDomain: "musicschool-c9041.firebaseapp.com",
-  projectId: "musicschool-c9041",
-  storageBucket: "musicschool-c9041.appspot.com",
-  messagingSenderId: "661649239928",
-  appId: "1:661649239928:web:21c19b09f63cb3a1a9a28d"
+  apiKey:import.meta.env.VITE_APP_apiKey,
+  authDomain:import.meta.env.VITE_APP_authDomain,
+  projectId:import.meta.env.VITE_APP_projectId,
+  storageBucket:import.meta.env.VITE_APP_storageBucket,
+  messagingSenderId:import.meta.env.VITE_APP_messagingSenderId,
+  appId:import.meta.env.VITE_APP_appId
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+export default app;
