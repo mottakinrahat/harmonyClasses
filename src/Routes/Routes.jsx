@@ -25,13 +25,11 @@ import Error from '../Error/Error';
         },
         {
           path:'instructors',
-          element:<PrivateRoutes><Instructor></Instructor></PrivateRoutes>,
-          loader:()=>fetch('http://localhost:5000/teachers')
+          element:<PrivateRoutes><Instructor></Instructor></PrivateRoutes>
         },
         {
           path:'theClasses',
-          element:<MusicClasses></MusicClasses>,
-          loader:()=>fetch('http://localhost:5000/classes')
+          element:<MusicClasses></MusicClasses>
         },
         {
           path:'login',
