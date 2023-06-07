@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import { Tooltip } from 'react-tooltip';
-
+import logo from '../../assets/logo/Logo.png'
 const Header = () => {
   const { user, logOut } = useContext(AuthContext)
   console.log(user);
@@ -35,7 +35,7 @@ const Header = () => {
     <div className='px-6'>
       <div className="navbar bg-base-100">
         <div className="flex-1">
-          <a className="btn btn-ghost normal-case text-xl">Harmonia Institute</a>
+        <img className='h-20' src={logo} alt="" />
         </div>
         <div className="flex-none">
           <ul className="menu menu-horizontal px-1">
