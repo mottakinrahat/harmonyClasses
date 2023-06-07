@@ -39,7 +39,7 @@ const Slider = () => {
                     </div>
                 </div>
             </div>
-            <Title title={'Children Card'} desc={'children does not want to like music'}></Title>
+            
         </div>
     );
 };
