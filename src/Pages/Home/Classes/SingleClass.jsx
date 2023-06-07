@@ -2,7 +2,7 @@ import React from 'react';
 
 const SingleClass = ({classItem}) => {
     console.log(classItem);
-    const{image,name,enrolled_students,activities}=classItem;
+    const{image,name,enrolled_students,activities,_id}=classItem;
     return (
         <div>
             <div className="card w-96 bg-base-100 shadow-xl">
@@ -16,7 +16,7 @@ const SingleClass = ({classItem}) => {
                     <p><span>Enrolled Student:</span>{enrolled_students}</p>
                     <div>
                         {
-                            activities.map(activity=><p>{activity}</p>)
+                            activities.map(activity=><p key={_id}>{activity}</p>)
                         }
                     </div>
                 </div>
