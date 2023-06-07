@@ -7,7 +7,7 @@ const Header = () => {
     <>
       <li><NavLink exact to="/" activeClassName="active">Home</NavLink></li>
       <li><NavLink to="/instructors" activeClassName="active">Instructor</NavLink></li>
-      <li><NavLink to="/classes" activeClassName="active">Classes</NavLink></li>
+      <li><NavLink to="/theClasses" activeClassName="active">Classes</NavLink></li>
       <li><NavLink to="/dashboard" activeClassName="active">Dashboard</NavLink></li>
       <li><NavLink to="/login"><button className='btn btn-sm'>Login</button></NavLink></li>
     </>

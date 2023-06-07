@@ -7,6 +7,7 @@ import Main from '../Layout/Main';
 import Home from '../Pages/Home/Home/Home';
 import Instructor from '../Pages/Instructor/Instructor';
 import Classes from '../Pages/Home/classes/Classes';
+import MusicClasses from '../Pages/Classes/MusicClasses';
 
   const router = createBrowserRouter([
     {
@@ -23,8 +24,8 @@ import Classes from '../Pages/Home/classes/Classes';
           loader:()=>fetch('http://localhost:5000/teachers')
         },
         {
-          path:'classes',
-          element:<Classes></Classes>,
+          path:'theClasses',
+          element:<MusicClasses></MusicClasses>,
           loader:()=>fetch('http://localhost:5000/classes')
         }
       ]
