@@ -1,20 +1,26 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Login = () => {
+    const [showPassword, setShowPassword] = useState(false);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
+
     const { loginUser } = useContext(AuthContext);
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data =>{
+    const onSubmit = data => {
         loginUser(data.email, data.password)
-        .then(result=>{
-            const loggedUser=result.user;
-            console.log(loggedUser);
-         })
-         .catch(err=>{
-             console.log(err.message);
-         })
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                navigate(from, { replace: true })
+            })
+            .catch(err => {
+                console.log(err.message);
+            })
     };
     return (
         <div className="flex justify-center items-center min-h-screen bg-gray-100">
@@ -38,12 +44,21 @@ const Login = () => {
                             Password
                         </label>
                         <input
-                            type="password"
+                            type={showPassword ? "text" : "password"}
                             id="password"
                             {...register("password")}
                             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500"
                             placeholder="Enter your password"
                         />
+                        <input
+                            type="checkbox"
+                            className="ml-2"
+                            checked={showPassword}
+                            onChange={() => setShowPassword(!showPassword)}
+                        />
+                        <label htmlFor="showPassword" className="ml-1 text-gray-700">
+                            Show password
+                        </label>
                     </div>
                     <button
                         type="submit"

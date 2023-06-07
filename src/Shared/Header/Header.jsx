@@ -1,9 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
+import { Tooltip } from 'react-tooltip';
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext)
+  console.log(user);
 
   const handleLogout = () => {
     logOut()
@@ -21,7 +23,11 @@ const Header = () => {
       <li><NavLink to="/instructors" activeClassName="active">Instructor</NavLink></li>
       <li><NavLink to="/theClasses" activeClassName="active">Classes</NavLink></li>
       <li><NavLink to="/dashboard" activeClassName="active">Dashboard</NavLink></li>
+     <div className='flex gap-2 items-center'>
+     <Tooltip id="my-tooltip" />
+            {user && <img src={user?.photoURL} className='h-[45px] border rounded-full' alt="" data-tooltip-id="my-tooltip" data-tooltip-content={user?.displayName} />} 
       <li>{user ? <button onClick={handleLogout} className='btn btn-xs bg-yellow-500 text-white'>Logout</button> : <NavLink to="/login"><button className='btn btn-xs bg-yellow-500 text-white'>Login</button></NavLink>}</li>
+     </div>
     </>
   );
 

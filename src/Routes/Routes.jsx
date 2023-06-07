@@ -10,6 +10,7 @@ import Classes from '../Pages/Home/classes/Classes';
 import MusicClasses from '../Pages/Classes/MusicClasses';
 import Login from '../Pages/Login/Login';
 import Register from '../Pages/Register/Register';
+import PrivateRoutes from './PrivateRoutes';
 
   const router = createBrowserRouter([
     {
@@ -22,7 +23,7 @@ import Register from '../Pages/Register/Register';
         },
         {
           path:'instructors',
-          element:<Instructor></Instructor>,
+          element:<PrivateRoutes><Instructor></Instructor></PrivateRoutes>,
           loader:()=>fetch('http://localhost:5000/teachers')
         },
         {
