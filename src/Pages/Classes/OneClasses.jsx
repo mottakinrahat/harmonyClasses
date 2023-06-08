@@ -1,35 +1,37 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
+import useClasses from '../../hook/useClasses';
 
 const OneClasses = ({ classItem }) => {
-    const { _id,image, name, enrolled_students, activities,available_sits,instructor_name } = classItem;
+    const { _id, image, name, enrolled_students, activities, available_sits, instructor_name } = classItem;
     const filledSits = available_sits === 0 ? 'card card-side bg-red-500 shadow-xl' : 'card card-side bg-base-100 shadow-xl';
-
-    const { user  } = useContext(AuthContext)
-    const handleAddClass = classItem  => {
-        if(user && user.email){
-        const classItems={classId:_id,image, name, enrolled_students, activities,available_sits,instructor:instructor_name,email: user.email }
-        fetch('http://localhost:5000/addClasses',{
-            method: 'POST',
-            headers:{
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(classItems)
-        })
-        .then(res=>res.json())
-        .then(data=>{
-            if(data.insertedId){
-                Swal.fire({
-                    position: 'top-center',
-                    icon: 'success',
-                    title: 'class added successfully',
-                    showConfirmButton: false,
-                    timer: 1500
-                  });
-            }
-        })
-      }
+    const [, refetch] = useClasses();
+    const { user } = useContext(AuthContext)
+    const handleAddClass = classItem => {
+        if (user && user.email) {
+            const classItems = { classId: _id, image, name, enrolled_students, activities, available_sits, instructor: instructor_name, email: user.email }
+            fetch('http://localhost:5000/addClasses', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(classItems)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.insertedId) {
+                        refetch();
+                        Swal.fire({
+                            position: 'top-center',
+                            icon: 'success',
+                            title: 'class added successfully',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    }
+                })
+        }
     }
     return (
         <div>
@@ -49,7 +51,7 @@ const OneClasses = ({ classItem }) => {
                         }
                     </div>
                     <div className="card-actions justify-end">
-                        <button onClick={()=>handleAddClass(classItem)} className="btn btn-warning font-semibold">Add Class</button>
+                        <button onClick={() => handleAddClass(classItem)} className="btn btn-warning font-semibold">Add Class</button>
                     </div>
                 </div>
             </div>

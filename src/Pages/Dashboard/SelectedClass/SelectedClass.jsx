@@ -2,9 +2,10 @@ import React from 'react';
 import useAddClasses from '../../../hook/useAddClasses';
 import Classes from '../../Home/classes/Classes';
 import ShowSelectedClass from './ShowSelectedClass';
+import useClasses from '../../../hook/useClasses';
 
 const SelectedClass = () => {
-  const [addClasses, refetch] = useAddClasses();
+  const [oneClass, refetch] = useClasses();
 
   return (
     <div>
@@ -20,7 +21,7 @@ const SelectedClass = () => {
             </tr>
           </thead>
           <tbody>
-            {addClasses.map((addClass, index) => (
+            {oneClass.map((addClass, index) => (
               <ShowSelectedClass key={addClass._id} addClass={addClass} index={index + 1} />
             ))}
           </tbody>
