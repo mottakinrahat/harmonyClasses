@@ -12,6 +12,9 @@ import Login from '../Pages/Login/Login';
 import Register from '../Pages/Register/Register';
 import PrivateRoutes from './PrivateRoutes';
 import Error from '../Error/Error';
+import Dashboard from '../Layout/Dashboard';
+import SelectedClass from '../Pages/Dashboard/SelectedClass/SelectedClass';
+
 
   const router = createBrowserRouter([
     {
@@ -41,6 +44,18 @@ import Error from '../Error/Error';
         }
       ]
     },
+  //Dashboard
+
+    {
+   path:'Dashboard',
+   element:<Dashboard></Dashboard>,
+   children:[
+    {
+      path:'selectedClass',
+      element:<SelectedClass></SelectedClass>
+    }
+   ]
+    }
   ]);
 
 export default router;

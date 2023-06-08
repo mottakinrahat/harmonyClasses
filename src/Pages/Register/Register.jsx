@@ -6,6 +6,7 @@ import { AuthContext } from '../../AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import SocialLogin from '../../Component/SocialLogin/SocialLogin';
 
 const Register = () => {
     const navigate = useNavigate();
@@ -128,6 +129,7 @@ const Register = () => {
                     </button>
                 </form>
                 <p className='mt-4' >Already have an account?<Link to='/login' className='text-blue-500'>Log in</Link></p>
+                <SocialLogin></SocialLogin>
             </div>
             <ToastContainer />
         </div>

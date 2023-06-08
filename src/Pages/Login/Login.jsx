@@ -2,6 +2,8 @@ import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
+import SocialLogin from '../../Component/SocialLogin/SocialLogin';
+
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -68,6 +70,7 @@ const Login = () => {
                     </button>
                 </form>
                 <p className='mt-4' >Don't have an account?<Link to='/register' className='text-blue-500'>Register</Link></p>
+            <SocialLogin></SocialLogin>
             </div>
         </div>
     );
