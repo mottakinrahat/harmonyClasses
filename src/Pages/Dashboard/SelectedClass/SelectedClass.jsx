@@ -22,7 +22,7 @@ const SelectedClass = () => {
           </thead>
           <tbody>
             {oneClass.map((addClass, index) => (
-              <ShowSelectedClass key={addClass._id} addClass={addClass} index={index + 1} />
+              <ShowSelectedClass key={addClass._id} addClass={addClass} refetch={refetch} index={index + 1} />
             ))}
           </tbody>
         </table>

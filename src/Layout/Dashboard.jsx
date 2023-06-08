@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
-import { Link, Navigate, Outlet } from 'react-router-dom';
-import { FaHome,FaChalkboardTeacher,FaBuilding,FaCheckCircle,FaMoneyCheckAlt } from "react-icons/fa";
+import { Link, Navigate, Outlet, useNavigate } from 'react-router-dom';
+import { FaHome, FaChalkboardTeacher, FaBuilding, FaCheckCircle, FaMoneyCheckAlt } from "react-icons/fa";
 import Home from '../Pages/Home/Home/Home';
 
 const Dashboard = () => {
- 
-    useEffect
+    //TODO: load data from the server to have dynamic isAdmin based on Data
+    const userRole = "admin";
+
     return (
         <div>
             <div className="drawer lg:drawer-open">
@@ -18,9 +19,31 @@ const Dashboard = () => {
                 <div className="drawer-side ">
                     <label htmlFor="my-drawer-2" className="drawer-overlay "></label>
                     <ul className="menu p-4 w-80 h-full  text-white  bg-yellow-500 border-2 border-black roundedxl font-semibold">
-                        {/* Sidebar content here */}
-                        <li><Link to="selectedClass"><FaCheckCircle></FaCheckCircle> My Selected Classes</Link></li>
-                        <li><Link><FaMoneyCheckAlt></FaMoneyCheckAlt> My enrolled Class</Link></li>
+                        {
+                            userRole === "admin" && (
+                                <>
+                                    <li><Link to="manageClasses"><FaCheckCircle></FaCheckCircle> Manage Classes</Link></li>
+                                    <li><Link to="manageUsers"><FaMoneyCheckAlt></FaMoneyCheckAlt> Manage Users</Link></li>
+                                </>)
+                        }
+                        {
+                            userRole === "instructor" && (
+                                <>
+                                    <li><Link to="manageClasses"><FaCheckCircle></FaCheckCircle>Add a Class</Link></li>
+                                    <li><Link to="manageUsers"><FaMoneyCheckAlt></FaMoneyCheckAlt> My Class</Link></li>
+                                </>
+                            )
+                        }
+                        {
+                            userRole === "student" && (
+                                <>
+                                    <li><Link to="selectedClass"><FaCheckCircle></FaCheckCircle>My Selected Class</Link></li>
+                                    <li><Link to="manageUsers"><FaMoneyCheckAlt></FaMoneyCheckAlt> My Enrolled Class</Link></li>
+                                </>
+                            )
+                        }
+
+
 
                         <div className='divider text-white'></div>
                         <li><Link to="/"><FaHome></FaHome> Home</Link></li>

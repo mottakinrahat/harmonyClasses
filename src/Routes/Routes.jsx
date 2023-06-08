@@ -14,6 +14,8 @@ import PrivateRoutes from './PrivateRoutes';
 import Error from '../Error/Error';
 import Dashboard from '../Layout/Dashboard';
 import SelectedClass from '../Pages/Dashboard/SelectedClass/SelectedClass';
+import ManageClasses from '../Pages/ManageClasses/ManageClasses';
+import ManageUsers from '../Pages/ManageUsers/ManageUsers';
 
 
   const router = createBrowserRouter([
@@ -53,6 +55,14 @@ import SelectedClass from '../Pages/Dashboard/SelectedClass/SelectedClass';
     {
       path:'selectedClass',
       element:<SelectedClass></SelectedClass>
+    },
+    {
+      path:'manageClasses',
+      element:<ManageClasses></ManageClasses>
+    },
+    {
+      path:'manageUsers',
+      element:<ManageUsers></ManageUsers>
     }
    ]
     }
