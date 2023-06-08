@@ -48,7 +48,7 @@ import SelectedClass from '../Pages/Dashboard/SelectedClass/SelectedClass';
 
     {
    path:'Dashboard',
-   element:<Dashboard></Dashboard>,
+   element:<PrivateRoutes><Dashboard></Dashboard></PrivateRoutes>,
    children:[
     {
       path:'selectedClass',

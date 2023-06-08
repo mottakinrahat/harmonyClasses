@@ -14,7 +14,6 @@ const Register = () => {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
-        console.log(data);
         if (data.password !== data.confirm_password) {
             toast.error('Password did not match');
             return;
@@ -25,15 +24,29 @@ const Register = () => {
                 const createdUser = result.user;
                 console.log(createdUser);
                 updateUserProfile(data.name, data.image_url)
-                if(createdUser.providerId){
-                    Swal.fire({
-                        position: 'top-center',
-                        icon: 'success',
-                        title: 'user created successfully',
-                        showConfirmButton: false,
-                        timer: 1500
-                      });
-                }
+                    .then(() => {
+                        const saveUser={ name:data.name,email:data.email}
+                        fetch('http://localhost:5000/users',{
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(saveUser)
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                console.log(data);
+                                if (data.insertedId) {
+                                    Swal.fire({
+                                        position: 'top-center',
+                                        icon: 'success',
+                                        title: 'user created successfully',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    });
+                                    navigate('/');
+                                }
+                            })
+
+                    })
 
             })
             .catch(err => {

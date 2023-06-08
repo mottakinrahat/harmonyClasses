@@ -13,7 +13,22 @@ const SocialLogin = () => {
    .then(result=>{
      const loggedGoogleUser=result.user;
      console.log(loggedGoogleUser);
-     navigate(from,{replace:true})
+     const saveUser={ name:loggedGoogleUser.DisplayName,email:loggedGoogleUser.email}
+     fetch('http://localhost:5000/users',{
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(saveUser)
+    })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            if (data.insertedId) {
+        
+                navigate(from,{replace:true})
+            }
+        })
+
+  
    })
    .catch(error=>{
     console.log(error.message);
