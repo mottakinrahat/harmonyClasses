@@ -4,13 +4,19 @@ import { FaHome, FaChalkboardTeacher, FaBuilding, FaCheckCircle, FaMoneyCheckAlt
 import Home from '../Pages/Home/Home/Home';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import useUser from '../hook/useUser';
+import useAdmin from '../hook/useAdmin';
+import useInstructor from '../hook/useInstructor';
+import useStudent from '../hook/useStudent';
 
 const Dashboard = () => {
-  const[userData]=useUser();
-  console.log(userData);
-const {user}=useContext(AuthContext)
- console.log(user);    
-    const userRole='admin';
+    const [userData] = useUser();
+    console.log(userData);
+    const { user } = useContext(AuthContext)
+    console.log(user);
+    // const userRole='admin';
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
+    const [isStudent] = useStudent();
 
     return (
         <div>
@@ -25,14 +31,14 @@ const {user}=useContext(AuthContext)
                     <label htmlFor="my-drawer-2" className="drawer-overlay "></label>
                     <ul className="menu p-4 w-80 h-full  text-white  bg-yellow-500 border-2 border-black rounded-xl font-semibold">
                         {
-                            userRole === "admin" && (
+                            isAdmin && (
                                 <>
                                     <li><Link to="manageClasses"><FaCheckCircle></FaCheckCircle> Manage Classes</Link></li>
                                     <li><Link to="manageUsers"><FaMoneyCheckAlt></FaMoneyCheckAlt> Manage Users</Link></li>
                                 </>)
                         }
                         {
-                            userRole === "instructor" && (
+                            isInstructor && (
                                 <>
                                     <li><Link to="manageClasses"><FaCheckCircle></FaCheckCircle>Add a Class</Link></li>
                                     <li><Link to="manageUsers"><FaMoneyCheckAlt></FaMoneyCheckAlt> My Class</Link></li>
@@ -40,7 +46,7 @@ const {user}=useContext(AuthContext)
                             )
                         }
                         {
-                            userRole === "student" && (
+                            isStudent &&(
                                 <>
                                     <li><Link to="selectedClass"><FaCheckCircle></FaCheckCircle>My Selected Class</Link></li>
                                     <li><Link to="manageUsers"><FaMoneyCheckAlt></FaMoneyCheckAlt> My Enrolled Class</Link></li>
