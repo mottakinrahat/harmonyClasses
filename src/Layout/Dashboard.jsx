@@ -1,11 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link, Navigate, Outlet, useNavigate } from 'react-router-dom';
 import { FaHome, FaChalkboardTeacher, FaBuilding, FaCheckCircle, FaMoneyCheckAlt } from "react-icons/fa";
 import Home from '../Pages/Home/Home/Home';
+import { AuthContext } from '../AuthProvider/AuthProvider';
+import useUser from '../hook/useUser';
 
 const Dashboard = () => {
-    //TODO: load data from the server to have dynamic isAdmin based on Data
-    const userRole = "admin";
+  const[userData]=useUser();
+  console.log(userData);
+const {user}=useContext(AuthContext)
+ console.log(user);    
+    const userRole='admin';
 
     return (
         <div>
@@ -18,7 +23,7 @@ const Dashboard = () => {
                 </div>
                 <div className="drawer-side ">
                     <label htmlFor="my-drawer-2" className="drawer-overlay "></label>
-                    <ul className="menu p-4 w-80 h-full  text-white  bg-yellow-500 border-2 border-black roundedxl font-semibold">
+                    <ul className="menu p-4 w-80 h-full  text-white  bg-yellow-500 border-2 border-black rounded-xl font-semibold">
                         {
                             userRole === "admin" && (
                                 <>
