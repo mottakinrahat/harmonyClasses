@@ -14,8 +14,9 @@ import PrivateRoutes from './PrivateRoutes';
 import Error from '../Error/Error';
 import Dashboard from '../Layout/Dashboard';
 import SelectedClass from '../Pages/Dashboard/SelectedClass/SelectedClass';
-import ManageClasses from '../Pages/ManageClasses/ManageClasses';
+import ADDaClass from '../Pages/ManageClasses/ADDaClass';
 import ManageUsers from '../Pages/ManageUsers/ManageUsers';
+import MyClasses from '../Pages/MyClasses/MyClasses';
 
 
   const router = createBrowserRouter([
@@ -58,11 +59,15 @@ import ManageUsers from '../Pages/ManageUsers/ManageUsers';
     },
     {
       path:'manageClasses',
-      element:<ManageClasses></ManageClasses>
+      element:<ADDaClass></ADDaClass>
     },
     {
       path:'manageUsers',
       element:<ManageUsers></ManageUsers>
+    },
+    {
+      path:'myClasses',
+      element:<MyClasses></MyClasses>
     }
    ]
     }

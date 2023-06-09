@@ -10,7 +10,6 @@ const Classes = () => {
         .then(res=>res.json())
         .then(data=>setClassData(data))
     },[])
-    console.log(classData);
     return (
      <div className='mt-10'>
         <Title  title={'Our Popular Classes'} desc={'We have so many popular classes'}></Title>

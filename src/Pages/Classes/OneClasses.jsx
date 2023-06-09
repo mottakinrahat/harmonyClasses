@@ -45,11 +45,8 @@ const OneClasses = ({ classItem }) => {
                     <p><span>Enrolled Student:</span> {enrolled_students}</p>
                     <p><span>Available Sits:</span> {available_sits}</p>
                     <p><span>Instructor:</span> {instructor_name}</p>
-                    <div className='border text-center rounded p-2'>
-                        {
-                            activities.map(activity => <p key={_id}>{activity}</p>)
-                        }
-                    </div>
+                    <p><span>Activities:</span> {activities}</p>
+                   
                     <div className="card-actions justify-end">
                         <button onClick={() => handleAddClass(classItem)} className="btn btn-warning font-semibold">Add Class</button>
                     </div>

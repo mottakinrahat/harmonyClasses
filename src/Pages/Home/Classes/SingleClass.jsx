@@ -1,7 +1,6 @@
 import React from 'react';
 
 const SingleClass = ({ classItem }) => {
-    console.log(classItem);
     const { image, name, enrolled_students, activities, _id } = classItem;
     return (
         <div>
@@ -13,12 +12,8 @@ const SingleClass = ({ classItem }) => {
 
                     </h2>
                     <p><span>Enrolled Student:</span>{enrolled_students}</p>
-                    <p><span>Enrolled Student:</span>{enrolled_students}</p>
-                    <div>
-                        {
-                            activities.map(activity => <p key={_id}>{activity}</p>)
-                        }
-                    </div>
+                    <p><span>Activities:</span>{activities}</p>
+                   
                 </div>
             </div>
         </div>

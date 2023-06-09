@@ -8,7 +8,7 @@ import useClasses from '../../hook/useClasses';
 const Header = () => {
   const { user, logOut } = useContext(AuthContext)
   const[oneClasses]=useClasses();
-  console.log(user);
+
 
   const handleLogout = () => {
     logOut()

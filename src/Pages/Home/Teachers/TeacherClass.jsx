@@ -2,7 +2,6 @@ import React from 'react';
 import Title from '../../../Component/Title/Title';
 
 const TeacherClass = ({ teacher}) => {
-    console.log(teacher);
     const{image,name,contact,classes}=teacher;
     return (
         <div>

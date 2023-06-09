@@ -9,10 +9,6 @@ import useInstructor from '../hook/useInstructor';
 import useStudent from '../hook/useStudent';
 
 const Dashboard = () => {
-    const [userData] = useUser();
-    console.log(userData);
-    const { user } = useContext(AuthContext)
-    console.log(user);
     // const userRole='admin';
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
@@ -41,7 +37,7 @@ const Dashboard = () => {
                             isInstructor && (
                                 <>
                                     <li><Link to="manageClasses"><FaCheckCircle></FaCheckCircle>Add a Class</Link></li>
-                                    <li><Link to="manageUsers"><FaMoneyCheckAlt></FaMoneyCheckAlt> My Class</Link></li>
+                                    <li><Link to="myClasses"><FaMoneyCheckAlt></FaMoneyCheckAlt> My Class</Link></li>
                                 </>
                             )
                         }

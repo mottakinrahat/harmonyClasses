@@ -9,7 +9,6 @@ const Teachers = () => {
         .then(res=>res.json())
         .then(data=>setTeachersData(data))
     },[])
-    console.log(teachersData);
     return (
         <div className='mt-10'>
             <Title title={'Our Teachers'} desc={'Our genius music teachers'}></Title>

@@ -11,7 +11,6 @@ const useClasses = () => {
     queryKey: ['oneClass', user?.email],
     queryFn: async () => {
       const res = await axiosSecure.get(`/oneClass?email=${user?.email}`);
-      console.log('res from axios', res);
       return res.data;
     },
   });
