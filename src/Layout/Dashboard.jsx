@@ -45,7 +45,7 @@ const Dashboard = () => {
                             isStudent &&(
                                 <>
                                     <li><Link to="selectedClass"><FaCheckCircle></FaCheckCircle>My Selected Class</Link></li>
-                                    <li><Link to="manageUsers"><FaMoneyCheckAlt></FaMoneyCheckAlt> My Enrolled Class</Link></li>
+                                    <li><Link to="myenrolledclass"><FaMoneyCheckAlt></FaMoneyCheckAlt> My Enrolled Class</Link></li>
                                 </>
                             )
                         }

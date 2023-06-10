@@ -5,10 +5,11 @@ import useAxiosSecure from './useAxiosSecure';
 
 const useClasses = () => {
   const [axiosSecure] = useAxiosSecure();
-  const { user } = useContext(AuthContext);
+  const { user,loading } = useContext(AuthContext);
 
   const { refetch, data: oneClasses = [] } = useQuery({
     queryKey: ['oneClass', user?.email],
+    enabled:!loading && !! user?.email,
     queryFn: async () => {
       const res = await axiosSecure.get(`/oneClass?email=${user?.email}`);
       return res.data;

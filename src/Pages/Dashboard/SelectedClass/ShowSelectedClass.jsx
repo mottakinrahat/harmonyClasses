@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const ShowSelectedClass = ({ addClass,refetch }) => {
@@ -56,7 +57,7 @@ const ShowSelectedClass = ({ addClass,refetch }) => {
             <td> ${price}</td>
             <td>
                 <button onClick={() => handleDelete(addClass)} className="btn btn-ghost bg-yellow-500 btn-xs mx-2">delete</button>
-                <button className="btn btn-ghost bg-yellow-500 btn-xs">payment</button>
+               <Link to={`/dashboard/selectedClass/payment/${_id}`}> <button className="btn btn-ghost bg-yellow-500 btn-xs">payment</button></Link>
             </td>
         </tr>
     );

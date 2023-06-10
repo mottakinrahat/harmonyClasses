@@ -17,6 +17,8 @@ import SelectedClass from '../Pages/Dashboard/SelectedClass/SelectedClass';
 import ADDaClass from '../Pages/ManageClasses/ADDaClass';
 import ManageUsers from '../Pages/ManageUsers/ManageUsers';
 import MyClasses from '../Pages/MyClasses/MyClasses';
+import MyEnrolledClass from '../Pages/MyEnrolledClass/MyEnrolledClass';
+import Payment from '../Pages/Payment/Payment';
 
 
   const router = createBrowserRouter([
@@ -68,6 +70,14 @@ import MyClasses from '../Pages/MyClasses/MyClasses';
     {
       path:'myClasses',
       element:<MyClasses></MyClasses>
+    },
+    {
+      path:'myenrolledclass',
+      element:<MyEnrolledClass></MyEnrolledClass>
+    },
+    {
+      path:'selectedClass/payment/:id',
+      element:<Payment></Payment>
     }
    ]
     }

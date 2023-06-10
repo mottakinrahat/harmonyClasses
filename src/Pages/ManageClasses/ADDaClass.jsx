@@ -3,11 +3,13 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
+import useClasses from '../../hook/useClasses';
 
 const ADDaClass = () => {
   const navigate = useNavigate();
   const { register, handleSubmit, formState: { errors } } = useForm();
   const { user } = useContext(AuthContext);
+  const[,refetch]=useClasses();
 
   const onSubmit = data => {
     const classData = {
@@ -29,6 +31,7 @@ const ADDaClass = () => {
       .then(data => {
         console.log(data);
         if (data.insertedId) {
+          refetch();
           Swal.fire({
             position: 'top-center',
             icon: 'success',
