@@ -2,6 +2,9 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
 import useClasses from '../../hook/useClasses';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
 
 const OneClasses = ({ classItem }) => {
     const { _id, image, name, enrolled_students, activities, available_sits, instructor_name } = classItem;
@@ -11,26 +14,25 @@ const OneClasses = ({ classItem }) => {
     const handleAddClass = classItem => {
         if (user && user.email) {
             const classItems = { classId: _id, image, name, enrolled_students, activities, available_sits, instructor: instructor_name, email: user.email }
-            fetch('http://localhost:5000/addClasses', {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify(classItems)
-            })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.insertedId) {
-                        refetch();
+            axios.post('http://localhost:5000/addClasses', classItems)
+                .then(response => {
+                    if (response.data) {
+                        refetch(); 
                         Swal.fire({
                             position: 'top-center',
                             icon: 'success',
-                            title: 'class added successfully',
+                            title: 'Class added successfully',
                             showConfirmButton: false,
                             timer: 1500
                         });
                     }
                 })
+                .catch(error => {
+                    console.log(error);
+                });
+        }
+        if(available_sits===0){
+            toast('the class is full')
         }
     }
     return (
@@ -46,10 +48,11 @@ const OneClasses = ({ classItem }) => {
                     <p><span>Available Sits:</span> {available_sits}</p>
                     <p><span>Instructor:</span> {instructor_name}</p>
                     <p><span>Activities:</span> {activities}</p>
-                   
+
                     <div className="card-actions justify-end">
                         <button onClick={() => handleAddClass(classItem)} className="btn btn-warning font-semibold">Add Class</button>
                     </div>
+                    <ToastContainer></ToastContainer>
                 </div>
             </div>
         </div>

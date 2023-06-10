@@ -14,7 +14,10 @@ const ADDaClass = () => {
       ...data,
       status: "pending",
       instructor_name: user.displayName,
-      email: user.email
+      email: user.email,
+      enrolled_students:parseInt(20-data.available_sits),
+      available_sits: parseInt(data.available_sits),
+      price: parseInt(data.price)
     };
     console.log(classData);
     fetch('http://localhost:5000/classes', {
