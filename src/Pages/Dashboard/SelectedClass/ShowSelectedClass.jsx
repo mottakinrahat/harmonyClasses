@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const ShowSelectedClass = ({ addClass,refetch }) => {
-    console.log(addClass);
     const { _id, image, name, enrolled_students, activities, available_sits, instructor, price } = addClass;
 
     const handleDelete = (items) => {

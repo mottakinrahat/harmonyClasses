@@ -1,11 +1,17 @@
-import React from 'react';
-import useAddClasses from '../../../hook/useAddClasses';
-import Classes from '../../Home/classes/Classes';
+
 import ShowSelectedClass from './ShowSelectedClass';
 import useClasses from '../../../hook/useClasses';
+import { useEffect, useState } from 'react';
 
 const SelectedClass = () => {
-  const [oneClass, refetch] = useClasses();
+  const[allClass,setAllClass]=useState([])
+  const[,refetch]=useClasses();
+  useEffect(()=>{
+    fetch('http://localhost:5000/classes')
+    .then(res=>res.json())
+    .then(data=>setAllClass(data))
+  },[])
+
 
   return (
     <div>
@@ -15,13 +21,14 @@ const SelectedClass = () => {
             <tr>
               <th>Class Name</th>
               <th>Instructor Name</th>
-              <th>Job</th>
+              <th>Price</th>
               <th>Favorite Color</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
-            {oneClass.map((addClass, index) => (
+            {allClass.map((addClass, index) => (
+      
               <ShowSelectedClass key={addClass._id} addClass={addClass} refetch={refetch} index={index + 1} />
             ))}
           </tbody>

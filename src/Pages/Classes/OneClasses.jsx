@@ -35,6 +35,7 @@ const OneClasses = ({classItem}) => {
         }
         if(available_sits===0){
             toast('the class is full')
+            return;
         }
     }
     return (
