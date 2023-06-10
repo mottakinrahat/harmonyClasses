@@ -7,7 +7,7 @@ import { AuthContext } from '../../AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
 import './Checkout.css';
 
-const Checkout = ({ price,classPrice }) => {
+const Checkout = ({ price, classPrice }) => {
     console.log(price);
     const stripe = useStripe();
     const elements = useElements();
@@ -17,7 +17,7 @@ const Checkout = ({ price,classPrice }) => {
     const [transactionId, setTransactionId] = useState('');
 
     const [clientSecret, setClientSecret] = useState('');
-
+    console.log(user);
 
     useEffect(() => {
         if (price > 0) {
@@ -73,24 +73,24 @@ const Checkout = ({ price,classPrice }) => {
             setTransactionId(paymentIntent.id);
             //save payment information to the server
             const payment = {
-                name:user?.name,
+                name: user?.displayName,
                 email: user?.email,
                 transactionId: paymentIntent.id,
                 price,
-                className:classPrice
-                
+                className: classPrice
+
             }
-            axiosSecure.post('/payments',payment)
-            .then(res=>{
-               console.log(res.data);
-               if(res.data.insertedId){
-                Swal.fire(
-                    'Success!',
-                    'Payment Data is added in Database!!!.',
-                    'success'
-                  )
-               } 
-            })
+            axiosSecure.post('/payments', payment)
+                .then(res => {
+                    console.log(res.data);
+                    if (res.data.insertedId) {
+                        Swal.fire(
+                            'Success!',
+                            'Payment Data is added in Database!!!.',
+                            'success'
+                        )
+                    }
+                })
 
 
         }
@@ -120,7 +120,7 @@ const Checkout = ({ price,classPrice }) => {
                 </button>
             </form>
             {transactionId && toast(`transaction complete with transaction id:${transactionId}`)}
-                <ToastContainer></ToastContainer>
+            <ToastContainer></ToastContainer>
         </>
     );
 };

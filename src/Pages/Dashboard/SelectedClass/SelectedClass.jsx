@@ -7,7 +7,6 @@ import { AuthContext } from '../../../AuthProvider/AuthProvider';
 const SelectedClass = () => {
   const[userClass,setUserClass]=useState([])
   const{user}=useContext(AuthContext);
-  console.log(user);
   const[,refetch]=useClasses();
   useEffect(()=>{
     fetch(`http://localhost:5000/paymentClasses?email=${user?.email}`)
