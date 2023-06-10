@@ -1,18 +1,21 @@
 
 import ShowSelectedClass from './ShowSelectedClass';
 import useClasses from '../../../hook/useClasses';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../../../AuthProvider/AuthProvider';
 
 const SelectedClass = () => {
-  const[allClass,setAllClass]=useState([])
+  const[userClass,setUserClass]=useState([])
+  const{user}=useContext(AuthContext);
+  console.log(user);
   const[,refetch]=useClasses();
   useEffect(()=>{
-    fetch('http://localhost:5000/classes')
+    fetch(`http://localhost:5000/paymentClasses?email=${user?.email}`)
     .then(res=>res.json())
-    .then(data=>setAllClass(data))
-  },[])
-
-
+    .then(data=>setUserClass(data))
+  },[user])
+ 
+ console.log(userClass);
   return (
     <div>
       <div className="overflow-x-auto">
@@ -22,12 +25,12 @@ const SelectedClass = () => {
               <th>Class Name</th>
               <th>Instructor Name</th>
               <th>Price</th>
-              <th>Favorite Color</th>
+              <th>Payment</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
-            {allClass.map((addClass, index) => (
+            {userClass.map((addClass, index) => (
       
               <ShowSelectedClass key={addClass._id} addClass={addClass} refetch={refetch} index={index + 1} />
             ))}

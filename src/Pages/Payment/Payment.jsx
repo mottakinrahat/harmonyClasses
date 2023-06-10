@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Checkout from './Checkout';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import { useParams } from 'react-router-dom';
 import useClassFilter from '../../hook/useClassFilter';
 import useClasses from '../../hook/useClasses';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK);
 
@@ -12,8 +13,9 @@ const Payment = () => {
     const { id } = useParams();
     const [classPrice, setClassPrice] = useState({})
     const [allClass, setAllClass] = useState([])
+    const{user}=useContext(AuthContext);
     useEffect(() => {
-        fetch('http://localhost:5000/classes')
+        fetch(`http://localhost:5000/paymentClasses?email=${user?.email}`)
             .then(res => res.json())
             .then(data => setAllClass(data))
     }, [])
