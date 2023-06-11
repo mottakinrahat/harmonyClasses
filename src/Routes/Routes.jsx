@@ -19,6 +19,8 @@ import ManageUsers from '../Pages/ManageUsers/ManageUsers';
 import MyClasses from '../Pages/MyClasses/MyClasses';
 import MyEnrolledClass from '../Pages/MyEnrolledClass/MyEnrolledClass';
 import Payment from '../Pages/Payment/Payment';
+import ManageClassAd from '../Pages/ManageClassAd/ManageClassAd';
+import FeedbackPage from '../Pages/ManageClassAd/FeedbackPage';
 
 
   const router = createBrowserRouter([
@@ -78,6 +80,14 @@ import Payment from '../Pages/Payment/Payment';
     {
       path:'selectedClass/payment/:id',
       element:<Payment></Payment>
+    },
+    {
+      path:'adminManageClass',
+      element:<ManageClassAd></ManageClassAd>
+    },
+    {
+      path:'adminManageClass/feedbackPage/:id',
+      element:<FeedbackPage></FeedbackPage>
     }
    ]
     }

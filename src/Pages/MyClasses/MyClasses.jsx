@@ -26,8 +26,9 @@ const MyClasses = () => {
                         <tr>
                             <th></th>
                             <th>Name</th>
-                            <th>Job</th>
-                            <th>Favorite Color</th>
+                            <th>Instructor Name</th>
+                            <th>Status</th>
+                            <th>Feedback</th>
                         </tr>
                     </thead>
                     <tbody>

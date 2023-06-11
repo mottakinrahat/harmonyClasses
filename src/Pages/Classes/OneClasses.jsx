@@ -6,20 +6,20 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 
-const OneClasses = ({classItem}) => {
+const OneClasses = ({ classItem }) => {
     const { _id, image, name, enrolled_students, activities, available_sits, instructor_name } = classItem;
     const filledSits = available_sits === 0 ? 'card card-side bg-red-500 shadow-xl' : 'card card-side bg-base-100 shadow-xl';
     const [, refetch] = useClasses();
     console.log(refetch);
     const { user } = useContext(AuthContext)
-    const handleAddClass =() => {
+    const handleAddClass = () => {
         if (user && user.email) {
             const classItems = { classId: _id, image, name, enrolled_students, activities, available_sits, instructor: instructor_name, email: user.email }
             axios.patch('http://localhost:5000/addClasses', classItems)
                 .then(response => {
                     console.log(response);
-                    if (response.data.modifiedCount>0) {
-                        refetch(); 
+                    if (response.data.modifiedCount > 0) {
+                        refetch();
                         Swal.fire({
                             position: 'top-center',
                             icon: 'success',
@@ -29,11 +29,8 @@ const OneClasses = ({classItem}) => {
                         });
                     }
                 })
-                .catch(error => {
-                    console.log(error);
-                });
         }
-        if(available_sits===0){
+        if (available_sits === 0) {
             toast('the class is full')
             return;
         }

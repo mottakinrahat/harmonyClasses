@@ -29,7 +29,7 @@ const Dashboard = () => {
                         {
                             isAdmin && (
                                 <>
-                                    <li><Link to="manageClasses"><FaCheckCircle></FaCheckCircle> Manage Classes</Link></li>
+                                    <li><Link to="adminManageClass"><FaCheckCircle></FaCheckCircle> Manage Classes</Link></li>
                                     <li><Link to="manageUsers"><FaMoneyCheckAlt></FaMoneyCheckAlt> Manage Users</Link></li>
                                 </>)
                         }

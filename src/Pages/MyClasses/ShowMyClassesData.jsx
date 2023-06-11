@@ -7,8 +7,10 @@ const ShowMyClassesData = ({ addData,index }) => {
             <tr>
                 <th>{index}</th>
                 <td>{addData.name}</td>
-                <td>Quality Control Specialist</td>
-                <td>Blue</td>
+                <td>{addData.instructor_name}</td>
+                <td>{addData.status}</td>
+                
+                <td>{addData.feedback}</td>
             </tr>
        
     );

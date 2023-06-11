@@ -19,7 +19,8 @@ const ADDaClass = () => {
       email: user.email,
       enrolled_students:parseFloat(20-data.available_sits),
       available_sits: parseFloat(data.available_sits),
-      price: parseFloat(data.price)
+      price: parseFloat(data.price),
+      feedback:""
     };
     console.log(classData);
     fetch('http://localhost:5000/classes', {
