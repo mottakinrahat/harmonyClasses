@@ -1,0 +1,14 @@
+/* Light theme styles */
+.light {
+    /* Add your light theme styles here */
+    background-color: #fff;
+    color: #000;
+    
+}
+
+/* Dark theme styles */
+.dark {
+    /* Add your dark theme styles here */
+    background-color: #333;
+    color: #000000;
+}
