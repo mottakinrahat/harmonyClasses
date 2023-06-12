@@ -4,12 +4,14 @@ import Swal from 'sweetalert2';
 import useClasses from '../../hook/useClasses';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { FaUser, FaUserPlus, FaUserMinus, FaUserTie, FaUserNinja } from "react-icons/fa";
 import axios from 'axios';
+import useOneClass from '../../hook/useOneClass';
 
 const OneClasses = ({ classItem }) => {
     const { _id, image, name, enrolled_students, activities, available_sits, instructor_name } = classItem;
     const filledSits = available_sits === 0 ? 'card card-side bg-red-500 shadow-xl' : 'card card-side bg-base-100 shadow-xl';
-    const [, refetch] = useClasses();
+   const [,refetch]=useOneClass();
     console.log(refetch);
     const { user } = useContext(AuthContext)
     const handleAddClass = () => {
@@ -40,14 +42,13 @@ const OneClasses = ({ classItem }) => {
             <div className={`card card-side bg-base-100 shadow-xl  ${filledSits}`}>
                 <figure><img className='h-60' src={image} alt="Movie" /></figure>
                 <div className="card-body">
-                    <h2 className="card-title">
+                    <h2 className="text-3xl font-bold text-blue-900">
                         {name}
-
                     </h2>
-                    <p><span>Enrolled Student:</span> {enrolled_students}</p>
-                    <p><span>Available Sits:</span> {available_sits}</p>
-                    <p><span>Instructor:</span> {instructor_name}</p>
-                    <p><span>Activities:</span> {activities}</p>
+                    <p><div className='flex'><span className='font-bold flex items-center'><FaUserPlus /> Enrolled Student:</span> {enrolled_students}</div></p>
+                    <p><div className='flex'><span className='font-bold flex items-center'><FaUserMinus /> Available Sits:</span> {available_sits}</div></p>
+                    <p><div className='flex'><span className='font-bold flex items-center'><FaUserTie /> Instructor:</span> {instructor_name}</div></p>
+                    <p><span className='font-bold flex items-center'><FaUserNinja></FaUserNinja>Activities:</span> {activities}</p>
 
                     <div className="card-actions justify-end">
                         <button onClick={() => handleAddClass(classItem)} className="btn btn-warning font-semibold">Add Class</button>

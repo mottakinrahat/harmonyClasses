@@ -5,9 +5,14 @@ import slider_3 from '../../assets/Sliders/slider-3.jpg'
 import guitar_1 from '../../assets/Sliders/guitar-1.jpg'
 import guitar_2 from '../../assets/Sliders/guitar-2.jpg'
 import guitar_3 from '../../assets/Sliders/guitar-3.jpg'
+import { motion } from "framer-motion"
 const Slider = () => {
     return (
-        <div>
+        <motion.div initial={{opacity:0 ,scale:0}}
+        whileInView={{opacity:1 ,scale:1}}
+        transition={{duration:0.2}}
+        viewport={{once:true}}
+        >
             <div className="carousel w-full h-[700px] md:mx-auto">
                 <div id="slide1" className="carousel-item relative w-full ">
                     <img src={slider_3} className="w-full" />
@@ -53,7 +58,7 @@ const Slider = () => {
                 </div>
             </div>
 
-        </div>
+        </motion.div>
     );
 };
 

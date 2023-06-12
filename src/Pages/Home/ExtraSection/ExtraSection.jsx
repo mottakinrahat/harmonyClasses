@@ -2,9 +2,13 @@ import React from 'react';
 import Title from '../../../Component/Title/Title';
 import backImage from '../../../assets/bgImage/guitar.jpg'
 import addImage from '../../../assets/bgImage/bgImageAdd.jpg';
+import { motion } from "framer-motion";
 const ExtraSection = () => {
     return (
-        <div>
+        <motion.div initial={{opacity:0 ,scale:0,y:200}}
+        whileInView={{opacity:1 ,scale:1,y:0}}
+        transition={{duration:0.2}}
+        viewport={{once:true}}>
             <div className='mt-10'>
                 <Title title={'About Our School'}></Title>
                 <div className="relative h-[500px] bg-cover bg-center" style={{ backgroundImage: `url(${backImage})` }}>
@@ -42,7 +46,7 @@ const ExtraSection = () => {
                 </div>
             </div>
 
-        </div>
+        </motion.div>
     );
 };
 

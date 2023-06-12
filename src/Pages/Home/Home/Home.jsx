@@ -5,6 +5,7 @@ import Teachers from '../Teachers/Teachers';
 import ExtraSection from '../ExtraSection/ExtraSection';
 import './Home.css';
 
+
 const Home = () => {
     const [theme, setTheme] = useState('light');
 

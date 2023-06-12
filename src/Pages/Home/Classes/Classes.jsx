@@ -13,7 +13,7 @@ const Classes = () => {
     return (
      <div className='mt-10'>
         <Title  title={'Our Popular Classes'} desc={'We have so many popular classes'}></Title>
-           <div className='grid md:grid-cols-3 justify-center items-center gap-2'>
+           <div className='grid  md:grid-cols-3 justify-center items-center gap-2'>
             {
                classData.slice(0,6).map(classItem=><SingleClass key={classItem._id} classItem={classItem}></SingleClass>)
             }
