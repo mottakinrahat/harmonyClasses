@@ -15,7 +15,7 @@ const Payment = () => {
     const [allClass, setAllClass] = useState([])
     const{user}=useContext(AuthContext);
     useEffect(() => {
-        fetch(`http://localhost:5000/paymentClasses?email=${user?.email}`)
+        fetch(`https://assignment-12-harmony-class-server.vercel.app/paymentClasses?email=${user?.email}`)
             .then(res => res.json())
             .then(data => setAllClass(data))
     }, [])

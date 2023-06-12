@@ -9,7 +9,7 @@ const FeedbackPage = ({ adminAdData, refetch }) => {
     };
 
     const handleSubmit = () => {
-        fetch(`http://localhost:5000/users/feedback/${adminAdData._id}`, {
+        fetch(`https://assignment-12-harmony-class-server.vercel.app/users/feedback/${adminAdData._id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',

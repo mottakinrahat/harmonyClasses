@@ -14,7 +14,7 @@ const ShowManageAd = ({ adminAdData, index, refetch }) => {
 
 
     const handleApprove = (adminAdData) => {
-        fetch(`http://localhost:5000/users/approved/${adminAdData._id}`, {
+        fetch(`https://assignment-12-harmony-class-server.vercel.app/users/approved/${adminAdData._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -30,7 +30,7 @@ const ShowManageAd = ({ adminAdData, index, refetch }) => {
             });
     }
     const handleDenied = (adminAdData) => {
-        fetch(`http://localhost:5000/users/denied/${adminAdData.adminAdData._id}`, {
+        fetch(`https://assignment-12-harmony-class-server.vercel.app/users/denied/${adminAdData.adminAdData._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -51,7 +51,7 @@ const ShowManageAd = ({ adminAdData, index, refetch }) => {
         event.preventDefault();
         const form=event.target;
         const feedbackData=form.feedback.value;
-        fetch(`http://localhost:5000/users/feedback/${classId}`, {
+        fetch(`https://assignment-12-harmony-class-server.vercel.app/users/feedback/${classId}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',

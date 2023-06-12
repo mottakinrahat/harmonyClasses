@@ -23,7 +23,7 @@ const ADDaClass = () => {
       feedback:""
     };
     console.log(classData);
-    fetch('http://localhost:5000/classes', {
+    fetch('https://assignment-12-harmony-class-server.vercel.app/classes', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(classData)

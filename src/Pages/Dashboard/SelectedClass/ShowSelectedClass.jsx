@@ -16,7 +16,7 @@ const ShowSelectedClass = ({ addClass,refetch }) => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/oneClass/${items._id}`, {
+                fetch(`https://assignment-12-harmony-class-server.vercel.app/oneClass/${items._id}`, {
                     method: 'DELETE',
                 })
                     .then(res => res.json())

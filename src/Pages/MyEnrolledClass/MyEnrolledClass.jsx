@@ -7,7 +7,7 @@ const MyEnrolledClass = () => {
     const{user}=useContext(AuthContext);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/payment?email=${user.email}`)
+        fetch(`https://assignment-12-harmony-class-server.vercel.app/payment?email=${user.email}`)
             .then(res => res.json())
             .then(data => setEnrolled(data))
     }, [])

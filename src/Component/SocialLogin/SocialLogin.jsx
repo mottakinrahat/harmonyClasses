@@ -14,7 +14,7 @@ const SocialLogin = () => {
      const loggedGoogleUser=result.user;
      console.log(loggedGoogleUser);
      const saveUser={ name:loggedGoogleUser.DisplayName,email:loggedGoogleUser.email}
-     fetch('http://localhost:5000/users',{
+     fetch('https://assignment-12-harmony-class-server.vercel.app/users',{
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(saveUser)
@@ -27,7 +27,7 @@ const SocialLogin = () => {
                 navigate(from,{replace:true})
             }
         })
-
+        navigate(from,{replace:true})
   
    })
    .catch(error=>{

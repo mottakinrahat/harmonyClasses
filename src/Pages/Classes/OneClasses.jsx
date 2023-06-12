@@ -6,6 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FaUser, FaUserPlus, FaUserMinus, FaUserTie, FaUserNinja } from "react-icons/fa";
 import axios from 'axios';
+import { motion } from "framer-motion";
 import useOneClass from '../../hook/useOneClass';
 import { Navigate, useNavigate } from 'react-router-dom';
 
@@ -19,7 +20,7 @@ const OneClasses = ({ classItem, refetch }) => {
         if (user && user.email) {
 
             const classItems = { classId: _id, image, name, enrolled_students, activities, available_sits, instructor: instructor_name, email: user.email }
-            axios.patch('http://localhost:5000/addClasses', classItems)
+            axios.patch('https://assignment-12-harmony-class-server.vercel.app/addClasses', classItems)
                 .then(response => {
                     console.log(response);
                     if (response.data.modifiedCount > 0) {
@@ -43,7 +44,10 @@ const OneClasses = ({ classItem, refetch }) => {
         }
     }
     return (
-        <div>
+        <motion.div
+            initial={{ opacity: 0, scale: 0, x: 200 }}
+            whileInView={{ opacity: 1, scale: 1, x: 0 }}
+            transition={{ duration: 0.2 }}>
             <div className={`card card-side bg-base-100 shadow-xl  ${filledSits}`}>
                 <figure><img className='h-60' src={image} alt="Movie" /></figure>
                 <div className="card-body">
@@ -61,7 +65,7 @@ const OneClasses = ({ classItem, refetch }) => {
                     <ToastContainer></ToastContainer>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

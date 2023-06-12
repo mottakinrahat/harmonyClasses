@@ -9,7 +9,7 @@ const SelectedClass = () => {
   const{user}=useContext(AuthContext);
   const[,refetch]=useClasses();
   useEffect(()=>{
-    fetch(`http://localhost:5000/paymentClasses?email=${user?.email}`)
+    fetch(`https://assignment-12-harmony-class-server.vercel.app/paymentClasses?email=${user?.email}`)
     .then(res=>res.json())
     .then(data=>setUserClass(data))
   },[user])

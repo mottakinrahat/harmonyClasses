@@ -7,7 +7,7 @@ const useUser = () => {
     const {refetch, data: userData = [] } = useQuery({
         queryKey: ['oneClass', user?.email],
 queryFn: async () => {
-    const response = await fetch('http://localhost:5000/users')
+    const response = await fetch('https://assignment-12-harmony-class-server.vercel.app/users')
     return response.json();
 },
 })

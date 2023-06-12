@@ -6,7 +6,7 @@ const MyClasses = () => {
     const [addedData, setAddedData] = useState([]);
     const { user } = useContext(AuthContext);
     console.log(user.email);
-    const url = `http://localhost:5000/nextClasses?email=${user.email}`;
+    const url = `https://assignment-12-harmony-class-server.vercel.app/nextClasses?email=${user.email}`;
 
     useEffect(() => {
         fetch(url)

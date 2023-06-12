@@ -7,7 +7,7 @@ const useClassFilter = () => {
     const {refetch, data: allClasses = [] } = useQuery({
         queryKey: ['classes', user?.email],
 queryFn: async () => {
-    const response = await fetch('http://localhost:5000/classes')
+    const response = await fetch('https://assignment-12-harmony-class-server.vercel.app/classes')
     return response.json();
 },
 })

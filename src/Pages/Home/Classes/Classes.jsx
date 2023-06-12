@@ -6,7 +6,7 @@ const Classes = () => {
    
     const [classData,setClassData] =useState([])
     useEffect(()=>{
-        fetch('http://localhost:5000/classes')
+        fetch('https://assignment-12-harmony-class-server.vercel.app/classes')
         .then(res=>res.json())
         .then(data=>setClassData(data))
     },[])

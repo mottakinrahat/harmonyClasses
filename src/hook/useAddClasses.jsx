@@ -8,7 +8,7 @@ const useAddClasses = () => {
     const { isLoading, refetch, data: addClasses = [] } = useQuery({
         queryKey: ['addClasses', user?.email],
         queryFn: async () => {
-            const res = await axios.get('http://localhost:5000/addClasses');
+            const res = await axios.get('https://assignment-12-harmony-class-server.vercel.app/addClasses');
             return res.data; // Access the response data directly
         },
     });
