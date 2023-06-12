@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Slider from '../../../Component/Slider/Slider';
 import Classes from '../classes/Classes';
 import Teachers from '../Teachers/Teachers';
@@ -7,16 +7,20 @@ import './Home.css';
 
 
 const Home = () => {
-    const [theme, setTheme] = useState('light');
-
+    const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
     const toggleTheme = () => {
         const newTheme = theme === 'light' ? 'dark' : 'light';
         setTheme(newTheme);
+
     };
+    useEffect(() => {
+        localStorage.setItem('theme', theme);
+    }, [theme]);
+
 
     return (
         <div className={theme}>
-             <button className='ml-6 mt-2'  onClick={toggleTheme}>
+            <button className='ml-6 mt-2' onClick={toggleTheme}>
                 {theme === 'light' ? <span className='bg-black text-white p-1 rounded-xl'>Dark</span> : <span className='bg-white text-black p-1 rounded-xl'>white</span>}
             </button>
             <Slider />

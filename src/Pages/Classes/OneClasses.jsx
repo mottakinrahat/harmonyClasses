@@ -7,15 +7,17 @@ import 'react-toastify/dist/ReactToastify.css';
 import { FaUser, FaUserPlus, FaUserMinus, FaUserTie, FaUserNinja } from "react-icons/fa";
 import axios from 'axios';
 import useOneClass from '../../hook/useOneClass';
+import { Navigate, useNavigate } from 'react-router-dom';
 
-const OneClasses = ({ classItem }) => {
+const OneClasses = ({ classItem, refetch }) => {
+    const navigate = useNavigate();
     const { _id, image, name, enrolled_students, activities, available_sits, instructor_name } = classItem;
     const filledSits = available_sits === 0 ? 'card card-side bg-red-500 shadow-xl' : 'card card-side bg-base-100 shadow-xl';
-   const [,refetch]=useOneClass();
-    console.log(refetch);
     const { user } = useContext(AuthContext)
+
     const handleAddClass = () => {
         if (user && user.email) {
+
             const classItems = { classId: _id, image, name, enrolled_students, activities, available_sits, instructor: instructor_name, email: user.email }
             axios.patch('http://localhost:5000/addClasses', classItems)
                 .then(response => {
@@ -31,6 +33,9 @@ const OneClasses = ({ classItem }) => {
                         });
                     }
                 })
+        }
+        else {
+            navigate('/login')
         }
         if (available_sits === 0) {
             toast('the class is full')

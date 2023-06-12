@@ -4,7 +4,7 @@ import { AuthContext } from '../AuthProvider/AuthProvider';
 
 const useOneClass = () => {
     const {user} = useContext(AuthContext);
-    const {refetch, data: oneClasses = [] } = useQuery({
+    const {data: oneClasses = [],refetch  } = useQuery({
         queryKey: ['addClasses', user?.email],
 queryFn: async () => {
     const response = await fetch('http://localhost:5000/addClasses')

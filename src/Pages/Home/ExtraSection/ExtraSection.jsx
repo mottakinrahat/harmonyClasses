@@ -29,19 +29,19 @@ const ExtraSection = () => {
 
             <div className="flex flex-row bg-yellow-500 p-4">
                 <div className="flex-1 text-center">
-                    <h2 className="text-white text-3xl">27</h2>
+                    <h2 className="text-white text-5xl  font-bold">27</h2>
                     <p className="text-white">Professional Teachers</p>
                 </div>
                 <div className="flex-1 text-center">
-                    <h2 className="text-white text-3xl">54</h2>
+                    <h2 className="text-white text-5xl font-bold">54</h2>
                     <p className="text-white">Learning Groups</p>
                 </div>
                 <div className="flex-1 text-center">
-                    <h2 className="text-white text-3xl">590</h2>
+                    <h2 className="text-white text-5xl font-bold">590</h2>
                     <p className="text-white">Happy Students</p>
                 </div>
                 <div className="flex-1 text-center">
-                    <h2 className="text-white text-3xl">8</h2>
+                    <h2 className="text-white text-5xl font-bold">UP TO 20</h2>
                     <p className="text-white">Music Classes</p>
                 </div>
             </div>
