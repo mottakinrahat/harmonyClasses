@@ -10,7 +10,7 @@ const Teachers = () => {
         .then(data=>setTeachersData(data))
     },[])
     return (
-        <div className='mt-10'>
+        <div className='mt-10 ml-20'>
             <Title title={'Our Teachers'} desc={'Our genius music teachers'}></Title>
               <div className='grid md:grid-cols-3 justify-center items-center gap-2'>
             {

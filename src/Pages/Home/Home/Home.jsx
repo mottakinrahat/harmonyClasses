@@ -4,6 +4,7 @@ import Classes from '../classes/Classes';
 import Teachers from '../Teachers/Teachers';
 import ExtraSection from '../ExtraSection/ExtraSection';
 import './Home.css';
+import SchoolGallery from '../SchoolGallery/SchoolGallery';
 
 
 const Home = () => {
@@ -27,6 +28,7 @@ const Home = () => {
             <Classes />
             <Teachers />
             <ExtraSection />
+            <SchoolGallery></SchoolGallery>
         </div>
     );
 };
