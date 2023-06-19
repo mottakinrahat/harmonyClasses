@@ -5,6 +5,7 @@ import Teachers from '../Teachers/Teachers';
 import ExtraSection from '../ExtraSection/ExtraSection';
 import './Home.css';
 import SchoolGallery from '../SchoolGallery/SchoolGallery';
+import MusicGroups from '../../Instructor/MusicGroups/MusicGroups';
 
 
 const Home = () => {
@@ -29,6 +30,7 @@ const Home = () => {
             <Teachers />
             <ExtraSection />
             <SchoolGallery></SchoolGallery>
+            <MusicGroups></MusicGroups>
         </div>
     );
 };
