@@ -6,6 +6,7 @@ import ExtraSection from '../ExtraSection/ExtraSection';
 import './Home.css';
 import SchoolGallery from '../SchoolGallery/SchoolGallery';
 import MusicGroups from '../../Instructor/MusicGroups/MusicGroups';
+import LatestNews from '../../LatestNews/LatestNews';
 
 
 const Home = () => {
@@ -31,6 +32,7 @@ const Home = () => {
             <ExtraSection />
             <SchoolGallery></SchoolGallery>
             <MusicGroups></MusicGroups>
+            <LatestNews></LatestNews>
         </div>
     );
 };
