@@ -24,7 +24,6 @@ const Home = () => {
     return (
         <div className={theme}>
             <button className='ml-6 mt-2' onClick={toggleTheme}>
-                {theme === 'light' ? <span className='bg-black text-white p-1 rounded-xl'>Dark</span> : <span className='bg-white text-black p-1 rounded-xl'>white</span>}
             </button>
             <Slider />
             <Classes />

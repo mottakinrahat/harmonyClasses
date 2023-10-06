@@ -24,9 +24,9 @@ const Dashboard = () => {
                     <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
 
                 </div>
-                <div className="drawer-side ">
+                <div className="drawer-side py-2 pl-2">
                     <label htmlFor="my-drawer-2" className="drawer-overlay "></label>
-                    <ul className="menu p-4 w-80 h-full  text-white  bg-yellow-500 border-2 border-black rounded-xl font-semibold">
+                    <ul className="menu p-4  w-80 h-full  text-white  bg-yellow-500 border-2 border-black rounded-xl font-semibold">
                         {
                             isAdmin && (
                                 <>

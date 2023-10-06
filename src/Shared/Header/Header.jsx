@@ -5,11 +5,16 @@ import { Tooltip } from 'react-tooltip';
 import logo from '../../assets/logo/Logo.png'
 import { FaSchool } from "react-icons/fa";
 import useClasses from '../../hook/useClasses';
+import useAdmin from '../../hook/useAdmin';
+import useInstructor from '../../hook/useInstructor';
+import useStudent from '../../hook/useStudent';
 const Header = () => {
   const { user, logOut } = useContext(AuthContext)
-  const[oneClasses]=useClasses();
+  const [oneClasses] = useClasses();
 
-
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
+  const [isStudent] = useStudent();
   const handleLogout = () => {
     logOut()
       .then(res => {
@@ -25,7 +30,9 @@ const Header = () => {
       <li><NavLink exact to="/" activeClassName="active">Home</NavLink></li>
       <li><NavLink to="/instructors" activeClassName="active">Instructor</NavLink></li>
       <li><NavLink to="/theClasses" activeClassName="active">Classes</NavLink></li>
-      <li><NavLink to="/dashboard" activeClassName="active" className='bg-yellow-200'><FaSchool className='w-10 h-4'></FaSchool> <div className="badge">{oneClasses.length}</div></NavLink></li>
+      {isStudent && <li><NavLink to="/dashboard/selectedClass" activeClassName="active" className='bg-yellow-200'><FaSchool className='w-10 h-4'></FaSchool> <div className="badge">{oneClasses.length}</div></NavLink></li>}
+      {isInstructor && <li><NavLink to="/dashboard/manageClasses" activeClassName="active" className='bg-yellow-200'><FaSchool className='w-10 h-4'></FaSchool> <div className="badge">{oneClasses.length}</div></NavLink></li>}
+      {isAdmin && <li><NavLink to="/dashboard/adminManageClass" activeClassName="active" className='bg-yellow-200'><FaSchool className='w-10 h-4'></FaSchool> <div className="badge">{oneClasses.length}</div></NavLink></li>}
       <div className='flex gap-2 items-center'>
         <Tooltip id="my-tooltip" />
         {user && <img src={user?.photoURL} className='h-[45px] border rounded-full' alt="" data-tooltip-id="my-tooltip" data-tooltip-content={user?.displayName} />}
