@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "musicschool-c9041"
-  }
+    "default": "musicschool-c9041",
+    "y": "musicschool-c9041"
+  },
+  "targets": {},
+  "etags": {}
 }

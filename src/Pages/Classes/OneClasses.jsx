@@ -54,10 +54,10 @@ const OneClasses = ({ classItem, refetch }) => {
                     <h2 className="text-3xl font-bold text-blue-900">
                         {name}
                     </h2>
-                    <p><div className='flex'><span className='font-bold flex items-center'><FaUserPlus /> Enrolled Student:</span> {enrolled_students}</div></p>
-                    <p><div className='flex'><span className='font-bold flex items-center'><FaUserMinus /> Available Sits:</span> {available_sits}</div></p>
-                    <p><div className='flex'><span className='font-bold flex items-center'><FaUserTie /> Instructor:</span> {instructor_name}</div></p>
-                    <p><span className='font-bold flex items-center'><FaUserNinja></FaUserNinja>Activities:</span> {activities}</p>
+                    <p><div className='flex gap-2 items-center'><span className='font-bold flex gap-2 items-center'><FaUserPlus /> Enrolled Student: </span>    {enrolled_students}</div></p>
+                    <p><div className='flex gap-2 items-center'><span className='font-bold flex gap-2 items-center'><FaUserMinus /> Available Sits:</span> {available_sits}</div></p>
+                    <p><div className='flex gap-2 items-center'><span className='font-bold flex gap-2 items-center'><FaUserTie /> Instructor:</span> {instructor_name}</div></p>
+                    <p><span className='font-bold flex gap-2 items-center'><FaUserNinja></FaUserNinja>Activities:</span> {activities}</p>
 
                     <div className="card-actions justify-end">
                         <button onClick={() => handleAddClass(classItem)} className="btn btn-warning font-semibold">Add Class</button>
